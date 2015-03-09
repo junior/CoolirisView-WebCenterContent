@@ -1,0 +1,271 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+CoolIrisView htmlIncludeOrString
+</title>
+</head>
+<body>
+
+<@dynamichtml std_js_bootstrap_vars@>
+<$if SearchResults$>
+	<$if CoolIrisWithSearchResults$>
+		<object id="ci_Build8_AdaoJunior_o" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%">
+			<param name="movie" value="<$if CoolIrisOnline$>http://apps.cooliris.com/embed/cooliris.swf<$else$><$HttpRelativeWebRoot$>resources/cooliris/cooliris.swf<$endif$>"/>
+			<param name="allowFullScreen" value="true"/>
+			<param name="allowScriptAccess" value="always"/>
+			<param name="bgColor" value="<$CoolIrisbgColor$>" />
+			<param name="flashvars" value="backgroundcolor=%23FFFFFF&style=light&glowcolor=%23000000&feed=<$HttpCgiPath$>%3FIdcService%3DGET_DOC_PAGE%26Action%3DGetTemplatePage%26Page%3DCOOLIRIS_MRSS%26SortOrderForRSS%3D<$SortOrder$>%26SortFieldForRSS%3D<$SortField$>%26ResultCountForRSS%3D<$CoolIrisResultCount$>%26QueryTextForRSS%3D<$UnparsedQueryText$>%26SearchQueryFormatForRSS%3D<$SearchQueryFormat$>&numrows=<$CoolIrisNumRows$>&showembed=false&showchrome=false&showsearch=false" />
+			<param name="wmode" value="opaque" />
+			<param name="showDescription" value="true" /> 
+			<embed id="ci_Build8_AdaoJunior_e" type="application/x-shockwave-flash" 
+				src="<$if CoolIrisOnline$>http://apps.cooliris.com/embed/cooliris.swf<$else$><$HttpRelativeWebRoot$>resources/cooliris/cooliris.swf<$endif$>" 
+				width="100%" 
+				height="100%" 
+				allowFullScreen="true" 
+				allowScriptAccess="always" 
+				bgColor="<$CoolIrisbgColor$>" 
+				flashvars="backgroundcolor=%23FFFFFF&style=light&glowcolor=%23000000&feed=<$HttpCgiPath$>%3FIdcService%3DGET_DOC_PAGE%26Action%3DGetTemplatePage%26Page%3DCOOLIRIS_MRSS%26SortOrderForRSS%3D<$SortOrder$>%26SortFieldForRSS%3D<$SortField$>%26ResultCountForRSS%3D<$CoolIrisResultCount$>%26QueryTextForRSS%3D<$UnparsedQueryText$>%26SearchQueryFormatForRSS%3D<$SearchQueryFormat$>&numrows=<$CoolIrisNumRows$>&showembed=false&showchrome=false&showsearch=false" 
+				wmode="opaque" 
+				showDescription="true">
+			</embed>
+		</object>
+	<$endif$>		
+<$endif$>
+
+<$include super.std_js_bootstrap_vars$>
+<@end@>
+
+<@dynamichtml custom_searchapi_result_menus_setup@>
+
+	<!--First create a top level menu item in the actions menu header-->
+	<$exec rsAppendNewRow("PageMenusData")$>
+	<$PageMenusData.nodeId = "VIEW_SearchResultsCoolIris"$>
+	<$PageMenusData.parentId = "VIEWS"$>
+	<$PageMenusData.label = "wwSeeWithCoolIris"$>
+	<$PageMenusData.type = "item"$>
+	<$PageMenusData.loadOrder = 70$>
+	<$PageMenusData.href = "<$HttpCgiPath$>?IdcService=GET_COOLIRIS_SEARCH_RESULTS&QueryText=<$UnparsedQueryText$>&idcToken=<$idcToken$>"$>
+
+	<$include super.custom_searchapi_result_menus_setup$>
+<@end@>
+
+<@dynamichtml cooliris_node_xml@>
+<$exec setContentType("text/xml")$>
+<$include cooliris_node_xml_doc$>
+<@end@>
+
+<@dynamichtml cooliris_node_xml_doc@>
+<$include cooliris_node_xml_header$>
+
+<$include cooliris_node_xml_body$>
+
+<$include cooliris_node_xml_footer$>
+<@end@>
+
+<@dynamichtml cooliris_node_xml_header@>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<$SearchQueryFormat=SearchQueryFormatForRSS$>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
+<@end@>
+
+<@dynamichtml cooliris_node_xml_body@>
+	<channel>
+	<title>Oracle WebCenter Content Media RSS</title>
+	<link>http://www.oracle.com/</link>
+	<description>Oracle WebCenter Content with CoolIris</description>
+	<logo url="<$strLower(HttpRelativeWebRoot)$>resources/cooliris/Oracle_Logo_Black.gif" />
+	<atom:icon><$strLower(HttpRelativeWebRoot)$>resources/cooliris/Oracle_Logo_Black.gif</atom:icon>
+
+	<$SearchQueryFormat=SearchQueryFormatForRSS$>
+	<$ResultCount=ResultCountForRSS$>
+	<$SortOrder=SortOrderForRSS$>
+	<$SortField=SortFieldForRSS$>
+	<$QueryText=QueryTextForRSS$>
+	<$executeService("GET_SEARCH_RESULTS")$>
+
+	<$loop SearchResults$>
+
+		<$if xDamConversionType like "video"$>
+			<$if dRendition1 like "G|T|P|J"$>
+				<$dID=dID$>
+				<$dDocName=dDocName$>
+				<$executeService("DOC_INFO")$>
+				<!-- Video - <$dDocTitle$> -->
+				<$if rsExists("MediaRenditions")$>
+					<$FlvFound="no"$>
+					<$loop MediaRenditions$>
+						<$if (mediaRendExtension like "flv")$>
+							<item>
+								<title><$xml(dDocTitle)$></title>
+								<media:description><$xml(xComments)$></media:description>
+								<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+								<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
+								<media:content type="video/x-flv" url="<$HttpRelativeWebRoot$><$urlEscape7Bit(mediaRendRelativeFileName)$>"/>
+								<guid isPermaLink="false"><$xml(dDocName)$></guid> 
+							</item>
+							<$FlvFound="yes"$>
+						<$break$>
+						<$elseif (dWebExtension like "swf")$>
+							<item>
+								<title><$xml(dDocTitle)$></title>
+								<media:description><$xml(xComments)$></media:description>
+								<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+								<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
+								<media:content type="video/x-flv" url="<$HttpRelativeWebRoot$><$urlEscape7Bit(mediaRendRelativeFileName)$>"/>
+								<guid isPermaLink="false"><$xml(dDocName)$></guid> 
+							</item>
+							<$FlvFound="yes"$>
+						<$break$>
+						<$endif$>
+					<$endloop$>
+					<$if (FlvFound like "no")$>
+						<item>
+							<title><$xml(dDocTitle)$></title>
+							<media:description><$xml(xComments)$></media:description>
+							<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+							<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
+							<media:content type="video/x-flv" url="<$HttpRelativeWebRoot$><$urlEscape7Bit(mediaRendRelativeFileName)$>"/>
+							<guid isPermaLink="false"><$xml(dDocName)$></guid> 							
+						</item>
+					<$endif$>
+					<$MediaRenditions=""$>
+				<$else$>
+					<item>
+						<title><$xml(dDocTitle)$></title>
+						<media:description><$xml(xComments)$></media:description>
+						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>groups/<$strLower(dSecurityGroup)$>/<$if dDocAccount$>@<$strLower(strReplace(dDocAccount,"/","/@"))$>/<$endif$>documents/<$strLower(dDocType)$>/<$strLower(dDocName)$>@<$strLower(dRendition1)$>~<$dRevLabel$>.<$if dRendition1 like "G"$>gif<$elseif dRendition1 like "P"$>png<$else$>jpg<$endif$>"/>
+						<media:content type="video/x-flv" url="<$URL$>"/>
+						<guid isPermaLink="false"><$xml(dDocName)$></guid>
+					</item>
+				<$endif$>
+				<!-- Video - End -->
+			<$endif$>
+		<$else$>
+			<$if dRendition1 like "G|T|P|J"$>
+				<$if (dWebExtension like "flv") or (dFormat like "video/x-flv") or (dFormat like "Application/flv")$>
+					<!-- FLV - <$dDocTitle$> -->
+					<item>
+						<title><$xml(dDocTitle)$></title>
+						<media:description><$xml(xComments)$></media:description>
+						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>groups/<$strLower(dSecurityGroup)$>/<$if dDocAccount$>@<$strLower(strReplace(dDocAccount,"/","/@"))$>/<$endif$>documents/<$strLower(dDocType)$>/<$strLower(dDocName)$>@<$strLower(dRendition1)$>~<$dRevLabel$>.<$if dRendition1 like "G"$>gif<$elseif dRendition1 like "P"$>png<$else$>jpg<$endif$>"/>
+						<media:content type="video/x-flv" url="<$URL$>"/>
+						<guid isPermaLink="false"><$xml(dDocName)$></guid>
+					</item>
+					<!-- FLV - End -->
+				<$elseif (dWebExtension like "swf") or (dFormat like "application/x-shockwave-flash") or (dFormat like "Application/swf")$>
+					<!-- SWF - <$dDocTitle$> -->
+					<item>
+						<title><$xml(dDocTitle)$></title>
+						<media:description><$xml(xComments)$></media:description>
+						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>groups/<$strLower(dSecurityGroup)$>/<$if dDocAccount$>@<$strLower(strReplace(dDocAccount,"/","/@"))$>/<$endif$>documents/<$strLower(dDocType)$>/<$strLower(dDocName)$>@<$strLower(dRendition1)$>~<$dRevLabel$>.<$if dRendition1 like "G"$>gif<$elseif dRendition1 like "P"$>png<$else$>jpg<$endif$>"/>
+						<media:content type="video/x-flv" url="<$URL$>"/>
+						<guid isPermaLink="false"><$xml(dDocName)$></guid>
+					</item>
+					<!-- SWF - End -->
+				<$else$>
+					<!-- Content - <$dDocTitle$> -->
+					<item>
+						<title><$xml(dDocTitle)$></title>
+						<media:description><a href="<$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>">Info</a><span> </span> <span> </span>|<span> </span> <span> </span><$xml(xComments)$></media:description>
+						<link><$URL$></link>
+						<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
+						<media:content url="<$URL$>"/>
+						<guid isPermaLink="false"><$xml(dDocName)$></guid>
+					</item>
+					<!-- Content - End -->
+				<$endif$>
+			<$else$>
+				<!-- (*) Content without thumbnail <$dDocTitle$> - (Rendition <> G T P J) -->
+				<$if (dWebExtension like "flv") or (dFormat like "video/x-flv") or (dFormat like "Application/flv")$>
+					<!-- FLV - <$dDocTitle$> -->
+					<item>
+						<title><$xml(dDocTitle)$></title>
+						<media:description><$xml(xComments)$></media:description>
+						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>resources/cooliris/video_icon.jpg"/>
+						<media:content type="video/x-flv" url="<$URL$>"/>
+						<guid isPermaLink="false"><$xml(dDocName)$></guid>
+					</item>
+					<!-- FLV - End -->
+				<$elseif (dWebExtension like "swf") or (dFormat like "application/x-shockwave-flash") or (dFormat like "Application/swf")$>
+					<!-- SWF - <$dDocTitle$> -->
+					<item>
+						<title><$xml(dDocTitle)$></title>
+						<media:description><$xml(xComments)$></media:description>
+						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>resources/cooliris/video_icon.jpg"/>
+						<media:content type="application/x-shockwave-flash" url="<$URL$>"/>
+						<guid isPermaLink="false"><$xml(dDocName)$></guid>
+					</item>
+					<!-- SWF - End -->
+				<$elseif CoolIrisSeeContentWithNoThumbnails$>
+					<!-- Thumbnails problem - <$dDocTitle$> -->
+					<item>
+						<title><$xml(dDocTitle)$></title>
+						<media:description><$xml(xComments)$></media:description>
+						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>					
+					<$coolirisThumbnailUrl = ""$>
+					<$if useThumbnails and dRendition1 and dRendition1 like "t|g|p"$>
+						<$coolirisThumbnailUrl = computeRenditionUrl(URL, dRevLabel, dRendition1)$>
+					<$endif$>
+					<$if coolirisThumbnailUrl$>
+						<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
+					<$elseif dGif$>
+						<media:thumbnail url="<$HttpWebRoot$>images/docgifs/<$dGif$>"/>					
+					<$else$>
+						<media:thumbnail url="<$HttpImagesRoot$><$doc_doctype_default_image$>"/>						
+					<$endif$>	
+					<!-- Thumbnails problem - End -->					
+				<$endif$>
+				<!-- (*) Content without thumbnail <$dDocTitle$>-->
+			<$endif$>
+		<$endif$>
+	<$endloop$>
+
+	</channel>
+
+<@end@>
+
+<@dynamichtml cooliris_node_xml_footer@>
+</rss>
+<@end@>
+
+<!--[[%
+  - This table is merged with the PublishedStaticFiles table.  It lists a number
+  - of directories that contain files which should be published to the weblayout
+  - directory.
+  %]]-->
+<@table CoolIrisView_PublishedStaticFiles@>
+<table border=1>
+	<tr>
+		<td>srcPath</td>
+		<td>path</td>
+		<td>class</td>
+		<td>loadOrder</td>
+		<td>doPublishScript</td>
+		<td>canDeleteDir</td>
+	</tr>
+	<tr>
+		<td>publish/cooliris</td>
+		<td>resources/cooliris</td>
+		<td>resources:ateam:cooliris</td>
+		<td>80</td>
+		<td><$doPublish = 1$></td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>publish/tools/swfobject</td>
+		<td>resources/tools/swfobject</td>
+		<td>resources:ateam:swfobject</td>
+		<td>80</td>
+		<td><$doPublish = 1$></td>
+		<td>0</td>
+	</tr>	
+</table>
+<@end@>
+
+</body></html>

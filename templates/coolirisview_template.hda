@@ -1,0 +1,29 @@
+﻿<?hda version="11gR1-11.1.1.5.0" jcharset=UTF8 encoding=utf-8?>
+@Properties LocalData
+blFieldTypes=
+blDateFormat=M/d/yy {h:mm[:ss] {aa}[zzz]}!mAM,PM!tAmerica/Chicago
+@end
+@ResultSet CoolirisView_Templates
+5
+name
+class
+formtype
+filename
+description
+COOLIRIS_MRSS
+Document
+XmlTemplate
+results.rss
+CoolIris Media RSS Template
+COOLIRIS_SEARCHRESULTS
+SearchResultsPage
+SearchResults
+cooliris_searchresults_template.htm
+CoolIris SearchResults Page Template
+COOLIRIS_ADMIN_PAGE
+Administration
+AdministrationLinks
+CoolirisView_admin.htm
+Page containing Cooliris View administration options
+@end
+

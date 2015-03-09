@@ -1,0 +1,107 @@
+﻿<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript"
+		src="<$HttpRelativeWebRoot$>resources/tools/swfobject/2.2/swfobject.js">
+	</script>
+
+	<$defaultPageTitle=lc("wwCoollIrisSRMainPageTitle")$>
+	
+	<$include std_html_head_declarations$>
+
+	<script>
+        var flashvars = {
+            feed: "<$HttpCgiPath$>%3FIdcService%3DGET_DOC_PAGE%26Action%3DGetTemplatePage%26Page%3DCOOLIRIS_MRSS%26SortOrderForRSS%3D<$SortOrder$>%26SortFieldForRSS%3D<$SortField$>%26ResultCountForRSS%3D<$CoolIrisResultCount$>%26QueryTextForRSS%3D<$QueryText$>%26SearchQueryFormatForRSS%3D<$SearchQueryFormat$>",
+			backgroundcolor: "#FFFFFF",
+			style: "light",
+			title: "<b><$lc("wwSearchResults")$></b>",
+			glowcolor: "#000000",
+			numrows: "<$CoolIrisNumRows$>",
+			showembed: "false",
+			showItemEmbed: "false",
+			showchrome: "false",
+			showsearch: "false"		
+        };
+        var params = {
+            allowFullScreen: "true",
+            allowScriptAccess: "always",
+			bgColor: "<$CoolIrisbgColor$>",
+			wmode: "opaque",
+			showDescription: "true"
+        };
+		<$if UsingTrays$>
+			swfobject.embedSWF("<$if CoolIrisOnline$>http://apps.cooliris.com/embed/cooliris.swf<$else$><$HttpRelativeWebRoot$>resources/cooliris/cooliris.swf<$endif$>",
+				"wall", "100%", "95%", "9.0.0", "<$HttpRelativeWebRoot$>resources/tools/swfobject/2.2/expressInstall.swf",
+				flashvars, params);	
+		<$else$>
+			swfobject.embedSWF("<$if CoolIrisOnline$>http://apps.cooliris.com/embed/cooliris.swf<$else$><$HttpRelativeWebRoot$>resources/cooliris/cooliris.swf<$endif$>",
+				"wall", "100%", "80%", "9.0.0", "<$HttpRelativeWebRoot$>resources/tools/swfobject/2.2/expressInstall.swf",
+				flashvars, params);		
+		<$endif$>
+    </script>	
+	
+</head>
+<body>
+	<$if (not UsingTrays)$>
+		<$include std_page_begin$>
+		<$include std_page_end$>	
+	<$endif$>
+		<tr>
+			<div id="menuBarContainer_1" class="listMenu_Bar">
+				<div style="padding:0px 1px 0px 1px;">
+					<table id="menuBarContainerTable_1" cellspacing="0" cellpadding="0" summary="">
+						<tr>
+							<td class="idcMainMenuBarCell" id="menu_cell_1">
+								<div class="idcMainMenuBar" id="menu_1">
+								</div>
+							</td>
+							<td class="menuBarExtrasTextCell">
+								<div id="searchResultsMenuExtraContainer">
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</tr>
+		<script type="text/javascript">
+		var menuItems_1 = [
+			{ id: "menuitem_1_VIEWS", text: "<$lc("wwChangeView")$>", url: "#", submenu: { id: "menu_1_VIEWS", itemdata: [
+				{ id: "menuitem_1_VIEW_SearchResultsClassic", text: "<$lc("wwXuiDefaultTemplate")$>", url: "<$HttpCgiPath$>?IdcService=GET_SEARCH_RESULTS&QueryText=<$QueryText$>&SortField=<$SortField$>&SortOrder=<$SortOrder$>&ResultCount=20&SearchQueryFormat=<$SearchQueryFormat$>&listTemplateId=SearchResultsClassic"},
+				{ id: "menuitem_1_VIEW_SearchResultsCoolIris", text: "<$lc("wwSeeWithCoolIris")$>", url: "<$HttpCgiPath$>?IdcService=GET_DOC_PAGE&Action=GetTemplatePage&Page=COOLIRIS_SEARCHRESULTS&QueryText=<$UnparsedQueryText$>&idcToken=<$idcToken$>", checked:true},
+				{ id: "menuitem_1_VIEW_SearchResultsThumbnail", text: "<$lc("wwXuiDamTemplate")$>", url: "<$HttpCgiPath$>?IdcService=GET_SEARCH_RESULTS&QueryText=<$QueryText$>&SortField=<$SortField$>&SortOrder=<$SortOrder$>&ResultCount=20&SearchQueryFormat=<$SearchQueryFormat$>&listTemplateId=SearchResultsThumbnail"},
+				{ id: "menuitem_1_VIEW_SearchResultsHeadline", text: "<$lc("wwXuiSlimTemplate")$>", url: "<$HttpCgiPath$>?IdcService=GET_SEARCH_RESULTS&QueryText=<$QueryText$>&SortField=<$SortField$>&SortOrder=<$SortOrder$>&ResultCount=20&SearchQueryFormat=<$SearchQueryFormat$>&listTemplateId=SearchResultsHeadline"},
+				{ id: "menuitem_1_CUSTOMIZE_VIEWS", text: "<$lc("wwCustomizeSearchResultTemplatesAction")$>", url: "<$HttpCgiPath$>?IdcService=GET_PORTAL_PAGE&Action=GetTemplatePage&Page=PNE_LIST_TEMPLATES_PAGE&sltClass=searchResults&sltPageTitle=wwSearchResultTemplatesFor"},
+			] } },
+		];
+		</script>
+		<script type="text/javascript">
+		YAHOO.util.Event.onContentReady('menuBarContainer_1', function () {
+			idc.widget.util.cleanMenuData(menuItems_1)
+			if (typeof(menuItems_1) != 'undefined' && menuItems_1.length > 0)
+			{
+				var roundedMenuBar = new idc.Rounded('menuBarContainer_1', 'top', 'small');
+				roundedMenuBar.roundCorners();
+			}
+		});
+		YAHOO.util.Event.onContentReady('menuBarContainer_1', function () {
+				var oMenu = new idc.widget.MenuBar('menu_1', {classname:"yui_idc_additionalPageMenu"});
+				if (typeof(menuItems_1) != 'undefined')
+				{
+					oMenu.addItems(menuItems_1);
+				}
+			oMenu.render();
+			oMenu.show();
+			
+		});
+		</script>
+	
+		<tr>	
+			<div id="wall">
+				<h1>SearchResultsCoolIris</h1>
+				<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+			</div>	
+		</tr>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿<?hda version="11.1.1.8.0-dev" jcharset="UTF8" encoding="utf-8"?>
+@Properties LocalData
+ComponentName=CoolirisView
+CreateDate=1/19/12 1:23 PM
+blDateFormat=M/d{/yy}{ h:mm[:ss]{ a}}!mAM,PM!tAmerica/Los_Angeles
+blFieldTypes=CreateDate date
+@end
+@ResultSet Manifest
+2
+entryType
+location
+component
+CoolirisView/coolirisview.hda
+componentExtra
+CoolirisView/readme.html
+componentExtra
+CoolirisView/publish/
+@end
