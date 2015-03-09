@@ -1,6 +1,13 @@
 # CoolirisView Component
 CoolirisView Search Results Component for Oracle WebCenter Content
 
+
+Date: 	Mar, 2015
+Component Version: 	2015_01_08(build 9)
+Product and Version: 	Oracle WebCenter Content Server
+Author: 	Adao.Junior
+Info: www.ateam-oracle.com / blog.contentra.com
+
 Component Information
 -------
 
@@ -15,6 +22,7 @@ Works offline, no internet access needed.
 This really helps show off the digital asset management capabilities.
 
 You still can utilizes their free browser plug-in to provide a very graphical and easy to use slideshow.
+
 Installation Instructions:
 -------
 Warning: The recommendation was you perform all necessary backups prior to applying this component.
@@ -32,6 +40,7 @@ Please check the coolirisview_environment.cfg for additional parameters and conf
 How to Uninstall this Component:
 -------
 Just uninstall the component from the WebCenter Content Admin Server or Component Wizard.
+
 Compatibility:
 -------
     Oracle WebCenter Content 11g PS5+
@@ -47,6 +56,7 @@ Notes:
 Roadmap:
 -------
 Admin Page to change options such as # lines. Central Media RSS/Geo RSS provider. HTML5 Wall (No flash, yeah!!!). iPad/iPhone Support.
+
 Release History:
 -------
     2015_03_08(build 9) -
