@@ -2,11 +2,17 @@
 CoolirisView Search Results Component for Oracle WebCenter Content
 
 
+
 Date: 	Mar, 2015
+
 Component Version: 	2015_01_08(build 9)
+
 Product and Version: 	Oracle WebCenter Content Server
+
 Author: 	Adao.Junior
+
 Info: www.ateam-oracle.com / blog.contentra.com
+
 
 Component Information
 -------
