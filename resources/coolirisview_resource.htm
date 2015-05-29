@@ -10,7 +10,7 @@ CoolIrisView htmlIncludeOrString
 <@dynamichtml std_js_bootstrap_vars@>
 <$if SearchResults$>
 	<$if CoolIrisWithSearchResults$>
-		<object id="ci_Build8_AdaoJunior_o" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%">
+		<object id="ci_Build10_AdaoJunior_o" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%">
 			<param name="movie" value="<$if CoolIrisOnline$>http://apps.cooliris.com/embed/cooliris.swf<$else$><$HttpRelativeWebRoot$>resources/cooliris/cooliris.swf<$endif$>"/>
 			<param name="allowFullScreen" value="true"/>
 			<param name="allowScriptAccess" value="always"/>
@@ -18,7 +18,7 @@ CoolIrisView htmlIncludeOrString
 			<param name="flashvars" value="backgroundcolor=%23FFFFFF&style=light&glowcolor=%23000000&feed=<$HttpCgiPath$>%3FIdcService%3DGET_DOC_PAGE%26Action%3DGetTemplatePage%26Page%3DCOOLIRIS_MRSS%26SortOrderForRSS%3D<$SortOrder$>%26SortFieldForRSS%3D<$SortField$>%26ResultCountForRSS%3D<$CoolIrisResultCount$>%26QueryTextForRSS%3D<$UnparsedQueryText$>%26SearchQueryFormatForRSS%3D<$SearchQueryFormat$>&numrows=<$CoolIrisNumRows$>&showembed=false&showchrome=false&showsearch=false" />
 			<param name="wmode" value="opaque" />
 			<param name="showDescription" value="true" /> 
-			<embed id="ci_Build8_AdaoJunior_e" type="application/x-shockwave-flash" 
+			<embed id="ci_Build10_AdaoJunior_e" type="application/x-shockwave-flash" 
 				src="<$if CoolIrisOnline$>http://apps.cooliris.com/embed/cooliris.swf<$else$><$HttpRelativeWebRoot$>resources/cooliris/cooliris.swf<$endif$>" 
 				width="100%" 
 				height="100%" 
@@ -99,7 +99,7 @@ CoolIrisView htmlIncludeOrString
 							<item>
 								<title><$xml(dDocTitle)$></title>
 								<media:description><$xml(xComments)$></media:description>
-								<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+								<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>
 								<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
 								<media:content type="video/x-flv" url="<$HttpRelativeWebRoot$><$urlEscape7Bit(mediaRendRelativeFileName)$>"/>
 								<guid isPermaLink="false"><$xml(dDocName)$></guid> 
@@ -110,7 +110,7 @@ CoolIrisView htmlIncludeOrString
 							<item>
 								<title><$xml(dDocTitle)$></title>
 								<media:description><$xml(xComments)$></media:description>
-								<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+								<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>
 								<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
 								<media:content type="video/x-flv" url="<$HttpRelativeWebRoot$><$urlEscape7Bit(mediaRendRelativeFileName)$>"/>
 								<guid isPermaLink="false"><$xml(dDocName)$></guid> 
@@ -123,7 +123,7 @@ CoolIrisView htmlIncludeOrString
 						<item>
 							<title><$xml(dDocTitle)$></title>
 							<media:description><$xml(xComments)$></media:description>
-							<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+							<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>
 							<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
 							<media:content type="video/x-flv" url="<$HttpRelativeWebRoot$><$urlEscape7Bit(mediaRendRelativeFileName)$>"/>
 							<guid isPermaLink="false"><$xml(dDocName)$></guid> 							
@@ -134,7 +134,7 @@ CoolIrisView htmlIncludeOrString
 					<item>
 						<title><$xml(dDocTitle)$></title>
 						<media:description><$xml(xComments)$></media:description>
-						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>
 						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>groups/<$strLower(dSecurityGroup)$>/<$if dDocAccount$>@<$strLower(strReplace(dDocAccount,"/","/@"))$>/<$endif$>documents/<$strLower(dDocType)$>/<$strLower(dDocName)$>@<$strLower(dRendition1)$>~<$dRevLabel$>.<$if dRendition1 like "G"$>gif<$elseif dRendition1 like "P"$>png<$else$>jpg<$endif$>"/>
 						<media:content type="video/x-flv" url="<$URL$>"/>
 						<guid isPermaLink="false"><$xml(dDocName)$></guid>
@@ -149,7 +149,7 @@ CoolIrisView htmlIncludeOrString
 					<item>
 						<title><$xml(dDocTitle)$></title>
 						<media:description><$xml(xComments)$></media:description>
-						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>
 						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>groups/<$strLower(dSecurityGroup)$>/<$if dDocAccount$>@<$strLower(strReplace(dDocAccount,"/","/@"))$>/<$endif$>documents/<$strLower(dDocType)$>/<$strLower(dDocName)$>@<$strLower(dRendition1)$>~<$dRevLabel$>.<$if dRendition1 like "G"$>gif<$elseif dRendition1 like "P"$>png<$else$>jpg<$endif$>"/>
 						<media:content type="video/x-flv" url="<$URL$>"/>
 						<guid isPermaLink="false"><$xml(dDocName)$></guid>
@@ -160,7 +160,7 @@ CoolIrisView htmlIncludeOrString
 					<item>
 						<title><$xml(dDocTitle)$></title>
 						<media:description><$xml(xComments)$></media:description>
-						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>
 						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>groups/<$strLower(dSecurityGroup)$>/<$if dDocAccount$>@<$strLower(strReplace(dDocAccount,"/","/@"))$>/<$endif$>documents/<$strLower(dDocType)$>/<$strLower(dDocName)$>@<$strLower(dRendition1)$>~<$dRevLabel$>.<$if dRendition1 like "G"$>gif<$elseif dRendition1 like "P"$>png<$else$>jpg<$endif$>"/>
 						<media:content type="video/x-flv" url="<$URL$>"/>
 						<guid isPermaLink="false"><$xml(dDocName)$></guid>
@@ -170,7 +170,7 @@ CoolIrisView htmlIncludeOrString
 					<!-- Content - <$dDocTitle$> -->
 					<item>
 						<title><$xml(dDocTitle)$></title>
-						<media:description><a href="<$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>">Info</a><span> </span> <span> </span>|<span> </span> <span> </span><$xml(xComments)$></media:description>
+						<media:description><a href="<$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1" target="_blank">Info</a><span> </span> <span> </span>|<span> </span> <span> </span><$xml(xComments)$></media:description>
 						<link><$URL$></link>
 						<media:thumbnail url="<$computeRenditionUrl(URL, dRevLabel, dRendition1)$>"/>
 						<media:content url="<$URL$>"/>
@@ -185,7 +185,7 @@ CoolIrisView htmlIncludeOrString
 					<item>
 						<title><$xml(dDocTitle)$></title>
 						<media:description><$xml(xComments)$></media:description>
-						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>
 						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>resources/cooliris/video_icon.jpg"/>
 						<media:content type="video/x-flv" url="<$URL$>"/>
 						<guid isPermaLink="false"><$xml(dDocName)$></guid>
@@ -196,7 +196,7 @@ CoolIrisView htmlIncludeOrString
 					<item>
 						<title><$xml(dDocTitle)$></title>
 						<media:description><$xml(xComments)$></media:description>
-						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>
+						<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>
 						<media:thumbnail url="<$strLower(HttpRelativeWebRoot)$>resources/cooliris/video_icon.jpg"/>
 						<media:content type="application/x-shockwave-flash" url="<$URL$>"/>
 						<guid isPermaLink="false"><$xml(dDocName)$></guid>
@@ -207,7 +207,7 @@ CoolIrisView htmlIncludeOrString
 					<item>
 						<title><$xml(dDocTitle)$></title>
 						<media:description><$xml(xComments)$></media:description>
-						<link><$if dRendition2 like "Z"$><$HttpCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$></link>					
+						<link><$if dRendition2 like "Z"$><$HttpAbsoluteCgiPath$>?IdcService=RENDITION_INFO<$xml("&")$>dID=<$dID$><$else$><$HttpAbsoluteCgiPath$>?IdcService=DOC_INFO<$xml("&")$>dID=<$dID$><$endif$>&coreContentOnly=1</link>					
 					<$coolirisThumbnailUrl = ""$>
 					<$if useThumbnails and dRendition1 and dRendition1 like "t|g|p"$>
 						<$coolirisThumbnailUrl = computeRenditionUrl(URL, dRevLabel, dRendition1)$>

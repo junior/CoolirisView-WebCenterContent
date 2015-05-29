@@ -3,9 +3,9 @@ CoolirisView Search Results Component for Oracle WebCenter Content
 
 
 
-Date: 	Mar, 2015
+Date: 	May, 2015
 
-Component Version: 	2015_01_08(build 9)
+Component Version: 	2015_05_29(build 10)
 
 Product and Version: 	Oracle WebCenter Content Server
 
@@ -65,6 +65,8 @@ Admin Page to change options such as # lines. Central Media RSS/Geo RSS provider
 
 Release History:
 -------
+    2015_05_29(build 10) -
+        Bug fixes
     2015_03_08(build 9) -
         11.1.1.8.8 Tested
         Cooliris logo is back.
